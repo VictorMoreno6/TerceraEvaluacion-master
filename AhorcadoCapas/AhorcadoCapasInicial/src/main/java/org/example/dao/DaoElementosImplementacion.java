@@ -1,6 +1,6 @@
 package org.example.dao;
 
-import org.example.domain.Categoria;
+import org.example.common.Categoria;
 import org.example.domain.Elemento;
 
 import java.util.List;
@@ -11,44 +11,59 @@ public class DaoElementosImplementacion implements DaoElementos {
     public DaoElementosImplementacion() {
         this.lista = new Elementos();
     }
-    @Override
-    public boolean addElemento(Elemento elemento) {
-
-        return lista.getListaelementos().add(elemento);
-    }
 
     @Override
-    public List<Elemento> consulta(Categoria categoria) {
-        return null;
-    }
-
-    @Override
-    public List<Elemento> consulta(int nivel) {
-        return null;
-    }
-
-    @Override
-    public boolean actualizarElemento(int id) {
+    public boolean isEmptyElementosList() {
         return false;
     }
 
     @Override
-    public List<Elemento> consultaElementos(boolean ascendente) {
+    public boolean insertarElemento(Elemento elemento) {
+        return false;
+    }
+
+    @Override
+    public boolean insertarElemento(int id, int level, String incognita, String categoria) {
+        return false;
+    }
+
+    @Override
+    public List<Elemento> getElementosCategoria(String categoria) {
         return null;
     }
 
     @Override
-    public List<Elemento> getListaElemento(String categoria) {
+    public List<Elemento> getElementosNivelCategoria(int nivel, String categoria) {
         return null;
     }
 
     @Override
-    public void removeElemento(Elemento elemento) {
+    public List<Elemento> getElementosNivel(int nivel) {
+        return null;
+    }
+
+    @Override
+    public List<Elemento> getElementos(boolean ascendente) {
+        return null;
+    }
+
+    @Override
+    public void eliminarElemento(Elemento elemento) {
 
     }
 
     @Override
-    public boolean isEmptyElementosList() {
+    public void eliminarElemento(int id) {
+
+    }
+
+    @Override
+    public boolean modificarCategoria(int id, String categoria) {
+        return false;
+    }
+
+    @Override
+    public boolean modificarElemento(int id, String incognita) {
         return false;
     }
 }

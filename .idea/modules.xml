@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AhorcadoCapas/AhorcadoCapasInicial/AhorcadoCapasInicial.iml" filepath="$PROJECT_DIR$/AhorcadoCapas/AhorcadoCapasInicial/AhorcadoCapasInicial.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/TerceraEvaluacion-master.iml" filepath="$PROJECT_DIR$/.idea/TerceraEvaluacion-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FicherosTexto/FicherosTexto.iml" filepath="$PROJECT_DIR$/FicherosTexto/FicherosTexto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TerceraEvaluacion.iml" filepath="$PROJECT_DIR$/.idea/TerceraEvaluacion.iml" />
     </modules>
   </component>
 </project>

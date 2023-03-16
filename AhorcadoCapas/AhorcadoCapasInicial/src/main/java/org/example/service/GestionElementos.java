@@ -5,19 +5,20 @@ import org.example.common.Comprobacion;
 import org.example.dao.DaoElementos;
 import org.example.dao.DaoElementosFicheros;
 import org.example.dao.DaoElementosImplementacion;
-import org.example.domain.Categoria;
 import org.example.domain.Elemento;
 
 import java.io.IOException;
 import java.util.List;
 
-public class GestionElementos implements IGestionElementos{
+public class GestionElementos implements IGestionElementos {
 
     private final DaoElementos daoElementos;
+
 
     public GestionElementos() {
         this.daoElementos = new DaoElementosImplementacion();
     }
+
     public GestionElementos(DaoElementos daoElementos) {
         this.daoElementos = daoElementos;
     }
@@ -33,60 +34,67 @@ public class GestionElementos implements IGestionElementos{
     }
 
     @Override
-    public boolean addElemento(Elemento elemento) throws CategoriaException {
-        Comprobacion.categoriaOk(elemento.getCategoria());
-        return daoElementos.addElemento(elemento);
-    }
-
-    @Override
-    public List<Elemento> consulta(Categoria categoria) {
-        return null;
-    }
-
-    @Override
-    public List<Elemento> consulta(int nivel) {
-        return null;
-    }
-
-    @Override
-    public void removeElemento(Elemento Elemento) {
-
-    }
-
-    @Override
-    public List<Elemento> elementosPorNivel(int nivel) {
-        return null;
-    }
-
-    @Override
-    public boolean actualizarCategoria(int id, Categoria categoria) throws CategoriaException {
+    public boolean insertarElemento(Elemento Elemento) {
         return false;
     }
 
     @Override
-    public List<Elemento> consultaElementos(boolean ascendente) {
+    public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException {
+        return false;
+    }
+
+    @Override
+    public List<Elemento> listar(String categoria) {
         return null;
     }
 
     @Override
-    public List<Elemento> getListaElementosCategoria(String categoria) {
+    public List<Elemento> listar(int nivel, String categoria) {
         return null;
+    }
+
+    @Override
+    public List<Elemento> listar(int nivel) {
+        return null;
+    }
+
+    @Override
+    public List<Elemento> listarElementos(boolean ascendente) {
+        return null;
+    }
+
+    @Override
+    public boolean modificarCategoria(int id, String categoria) throws CategoriaException {
+        return false;
+    }
+
+    @Override
+    public boolean modificarElemento(int id, String incognita) {
+        return false;
+    }
+
+    @Override
+    public List<Elemento> getListaElementosCategoria() {
+        return null;
+    }
+
+    @Override
+    public void eliminarElemento(Elemento Elemento) {
+
     }
 
     @Override
     public void crearFicheros() throws IOException {
-        DaoElementosFicheros.crearFicheros();
+
     }
 
     @Override
     public boolean cargarFichero() throws IOException {
-        //ver si existe el fichero y si su tamaño refleja que tenga datos y cargar su contenido en RAM
         return false;
     }
 
     @Override
     public boolean escribirFichero() {
-
         return false;
     }
 

@@ -1,13 +1,20 @@
 package org.example.common;
 
-import org.example.domain.Categoria;
-
 public class Comprobacion {
 
-    public static void categoriaOk(Categoria categoria) throws CategoriaException {
-        if (categoria != Categoria.accion && categoria != Categoria.comedia
-                && categoria != Categoria.miedo && categoria != Categoria.pokemon)
-            throw new CategoriaException();
+    public static void categoriaOk(String categoria) throws CategoriaException {
+        boolean esta = false;
+        Categoria aux [] = Categoria.values();
+        for(int i=0; i<aux.length && !esta;i++){
+            System.out.println(aux[i].toString()+" - ");
+            if (aux[i].toString().equalsIgnoreCase(categoria))
+                esta=true;
+        }
+        /*for(Categoria c: Categoria.values())
+            System.out.println(c+"-");*/
+        if (!esta)
+            throw new CategoriaException(categoria);
+
     }
 }
 

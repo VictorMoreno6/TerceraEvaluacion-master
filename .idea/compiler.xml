@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="FicherosTexto" />
         <module name="AhorcadoCapasInicial" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AhorcadoCapasInicial" target="19" />
+      <module name="FicherosTexto" target="19" />
     </bytecodeTargetLevel>
   </component>
 </project>

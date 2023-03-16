@@ -1,19 +1,18 @@
 package org.example.dao;
 
-import org.example.domain.Categoria;
 import org.example.domain.Elemento;
-
 import java.util.List;
 
 public interface DaoElementos {
-    public boolean addElemento(Elemento elemento) ;
-    public List<Elemento> consulta(Categoria categoria);
-    public List<Elemento> consulta(int nivel);
-    public boolean actualizarElemento(int id) ;
-    public List<Elemento> consultaElementos(boolean ascendente);
-    public List<Elemento> getListaElemento(String categoria) ;
-    public void removeElemento(Elemento elemento) ;
     public boolean isEmptyElementosList() ;
-
-
-}
+    public boolean insertarElemento(Elemento elemento) ;
+    public boolean insertarElemento(int id, int level, String incognita, String categoria);
+    public List<Elemento> getElementosCategoria(String categoria);
+    public List<Elemento> getElementosNivelCategoria(int nivel, String categoria);
+    public List<Elemento> getElementosNivel (int nivel);
+    public List<Elemento> getElementos(boolean ascendente);
+    public boolean modificarCategoria(int id, String categoria);
+    public boolean modificarElemento(int id, String incognita);
+    public void eliminarElemento(Elemento elemento) ;
+    public void eliminarElemento(int id) ;
+    }

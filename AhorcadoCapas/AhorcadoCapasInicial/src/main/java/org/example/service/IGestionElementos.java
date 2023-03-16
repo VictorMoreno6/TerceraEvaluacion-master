@@ -1,7 +1,6 @@
 package org.example.service;
 
 import org.example.common.CategoriaException;
-import org.example.domain.Categoria;
 import org.example.domain.Elemento;
 
 import java.io.IOException;
@@ -10,14 +9,27 @@ import java.util.List;
 public interface IGestionElementos {
     public boolean isEmptyElementosList();
     public List<Elemento> getListaElementos();
-    public boolean addElemento(Elemento Elemento) throws CategoriaException;
-    public List<Elemento> consulta(Categoria categoria);
-    public List<Elemento> consulta(int nivel);
-    public void removeElemento(Elemento Elemento);
-    public List<Elemento> elementosPorNivel(int nivel);
-    public boolean actualizarCategoria(int id, Categoria categoria) throws CategoriaException;
-    public List<Elemento> consultaElementos(boolean ascendente);
-    public List<Elemento> getListaElementosCategoria(String categoria);
+    public boolean insertarElemento(Elemento Elemento);
+
+    /**
+     *
+     * @param id
+     * @param level
+     * @param incognita
+     * @param categoria si la categoria no es válida se lanzará una excepción y no será insertado el elememto
+     * @return
+     * @throws CategoriaException
+     */
+    public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException;
+    public List<Elemento> listar(String categoria);
+    public List<Elemento> listar(int nivel, String categoria);
+    public List<Elemento> listar (int nivel);
+    public List<Elemento> listarElementos(boolean ascendente);
+    public boolean modificarCategoria(int id, String categoria) throws CategoriaException;
+    public boolean modificarElemento(int id, String incognita);
+
+    public List<Elemento> getListaElementosCategoria();
+    public void eliminarElemento(Elemento Elemento);
     public void crearFicheros()throws IOException;
     public boolean cargarFichero() throws IOException;
     public boolean escribirFichero();
