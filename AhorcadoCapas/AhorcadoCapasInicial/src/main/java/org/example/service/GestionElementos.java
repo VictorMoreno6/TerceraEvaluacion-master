@@ -25,37 +25,37 @@ public class GestionElementos implements IGestionElementos {
 
     @Override
     public boolean isEmptyElementosList() {
-        return false;
+        return daoElementos.isEmptyElementosList();
     }
 
     @Override
     public List<Elemento> getListaElementos() {
-        return null;
+        return daoElementos.getElementos();
     }
 
     @Override
     public boolean insertarElemento(Elemento Elemento) {
-        return false;
+        return daoElementos.insertarElemento(Elemento);
     }
 
     @Override
     public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException {
-        return false;
+        return daoElementos.insertarElemento(id,level,incognita,categoria);
     }
 
     @Override
     public List<Elemento> listar(String categoria) {
-        return null;
+        return daoElementos.getElementosCategoria(categoria);
     }
 
     @Override
     public List<Elemento> listar(int nivel, String categoria) {
-        return null;
+        return daoElementos.getElementosNivelCategoria(nivel, categoria);
     }
 
     @Override
     public List<Elemento> listar(int nivel) {
-        return null;
+        return return daoElementos.getElementosNivel(nivel);
     }
 
     @Override

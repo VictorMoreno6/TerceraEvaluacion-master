@@ -4,7 +4,7 @@ import org.example.common.CategoriaException;
 import org.example.common.Comprobacion;
 import org.example.dao.Elementos;
 
-public class Elemento {
+public class Elemento implements Comparable<Elemento> {
     private int id;
     private int level;
     private String incognita;
@@ -25,6 +25,7 @@ public class Elemento {
         Comprobacion.categoriaOk(categoria);
         this.categoria = categoria;
     }
+
     public Elemento(int level, String incognita, String categoria) throws CategoriaException {
         this.id = Elementos.getAutonumerico();
         Elementos.setAutonumerico(Elementos.getAutonumerico()+1);
@@ -36,9 +37,38 @@ public class Elemento {
     public String getCategoria() {
         return categoria;
     }
-
     public void setCategoria(String categoria) throws CategoriaException {
         Comprobacion.categoriaOk(categoria);
         this.categoria = categoria;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        //Comprobacion.idOk(id);
+        this.id = id;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public String getIncognita() {
+        return incognita;
+    }
+
+    public void setIncognita(String incognita) {
+        this.incognita = incognita;
+    }
+
+    @Override
+    public int compareTo(Elemento o) {
+        return Integer.compare(id,o.id);
     }
 }

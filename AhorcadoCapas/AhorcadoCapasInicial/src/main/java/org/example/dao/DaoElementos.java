@@ -10,7 +10,8 @@ public interface DaoElementos {
     public List<Elemento> getElementosCategoria(String categoria);
     public List<Elemento> getElementosNivelCategoria(int nivel, String categoria);
     public List<Elemento> getElementosNivel (int nivel);
-    public List<Elemento> getElementos(boolean ascendente);
+    public List<Elemento> getElementosOrdenados(boolean ascendente);
+    public List<Elemento> getElementos();
     public boolean modificarCategoria(int id, String categoria);
     public boolean modificarElemento(int id, String incognita);
     public void eliminarElemento(Elemento elemento) ;
