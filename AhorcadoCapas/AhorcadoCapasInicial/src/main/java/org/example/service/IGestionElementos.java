@@ -7,10 +7,6 @@ import java.io.IOException;
 import java.util.List;
 
 public interface IGestionElementos {
-    public boolean isEmptyElementosList();
-    public List<Elemento> getListaElementos();
-    public boolean insertarElemento(Elemento Elemento);
-
     /**
      *
      * @param id
@@ -21,15 +17,19 @@ public interface IGestionElementos {
      * @throws CategoriaException
      */
     public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException;
+    public boolean isEmptyElementosList();
+    public List<Elemento> getListaElementos();
+
+    public boolean insertarElemento(Elemento Elemento);
     public List<Elemento> listar(String categoria);
     public List<Elemento> listar(int nivel, String categoria);
     public List<Elemento> listar (int nivel);
     public List<Elemento> listarElementos(boolean ascendente);
     public boolean modificarCategoria(int id, String categoria) throws CategoriaException;
     public boolean modificarElemento(int id, String incognita);
-
-    public List<Elemento> getListaElementosCategoria();
+    public List<Elemento> getListaElementosCategoria(String categoria);
     public void eliminarElemento(Elemento Elemento);
+    public void eliminarElemento(int id);
     public void crearFicheros()throws IOException;
     public boolean cargarFichero() throws IOException;
     public boolean escribirFichero();

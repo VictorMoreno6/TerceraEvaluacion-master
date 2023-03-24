@@ -12,7 +12,7 @@ public class DaoElementosFicheros {
         File fichero1 = new File(FICHERO);
         File fichero2 = new File(FICHEROB);
         if (!fichero1.exists())
-                fichero1.createNewFile();
+            fichero1.createNewFile();
         if (!fichero2.exists())
             fichero2.createNewFile();
     }
@@ -34,9 +34,18 @@ public class DaoElementosFicheros {
             java.util.logging.Logger.getLogger(DaoElementosFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
 
         }
-
         return auxiliar;
+    }
 
+    public static boolean escribirFichero(List<Elemento> Elementos) {
+        boolean escrito = false;
+        try (ObjectOutputStream os = new ObjectOutputStream(new FileOutputStream(FICHERO))) {
+            os.writeObject(Elementos);
+            escrito = true;
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(DaoElementosFicheros.class.getName()).log(java.util.logging.Level.SEVERE, ex.getMessage(), ex);
+        }
+        return escrito;
     }
 
     /**

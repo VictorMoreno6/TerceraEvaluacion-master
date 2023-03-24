@@ -55,32 +55,37 @@ public class GestionElementos implements IGestionElementos {
 
     @Override
     public List<Elemento> listar(int nivel) {
-        return return daoElementos.getElementosNivel(nivel);
+        return daoElementos.getElementosNivel(nivel);
     }
 
     @Override
     public List<Elemento> listarElementos(boolean ascendente) {
-        return null;
+        return daoElementos.getElementosOrdenados(ascendente);
     }
 
     @Override
     public boolean modificarCategoria(int id, String categoria) throws CategoriaException {
-        return false;
+        return daoElementos.modificarCategoria(id,categoria);
     }
 
     @Override
     public boolean modificarElemento(int id, String incognita) {
-        return false;
+        return daoElementos.modificarElemento(id, incognita);
     }
 
     @Override
-    public List<Elemento> getListaElementosCategoria() {
-        return null;
+    public List<Elemento> getListaElementosCategoria(String categoria) {
+        return daoElementos.getElementosCategoria(categoria);
     }
 
     @Override
     public void eliminarElemento(Elemento Elemento) {
+        daoElementos.eliminarElemento(Elemento);
+    }
 
+    @Override
+    public void eliminarElemento(int id) {
+        daoElementos.eliminarElemento(id);
     }
 
     @Override
