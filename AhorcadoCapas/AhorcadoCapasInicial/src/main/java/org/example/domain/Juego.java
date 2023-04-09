@@ -20,6 +20,8 @@ public class Juego {
     private GestionElementos lista;
     private int fallos;
 
+    private ArrayList<String> palabrausuario;
+
     private int dificultad; //opcional, aquí o por elemento.
     public Juego(Jugador jugador, Elemento aAdivinar){
         this.jugador= jugador;
@@ -62,6 +64,8 @@ public class Juego {
         int azar = (int) (Math.random() * grupoPalabras.size());
         aAdivinar= grupoPalabras.get(azar);
         String palabra=aAdivinar.getIncognita();
+        int length =palabra.length();
+        palabrausuario = new ArrayList<String>(length);
         return palabra;
     }
 
@@ -69,19 +73,29 @@ public class Juego {
         //String palabra= obtenerPalabra();
         int length =palabra.length();
         boolean hay=false;
-        ArrayList<String> aux = new ArrayList<>(length);
+        //ArrayList<String> aux = new ArrayList<>(length);
         for (int num=0;num<length;num++) {
             if (a.equalsIgnoreCase(String.valueOf(palabra.charAt(num)))){
-                a=aux.get(num);
+                palabrausuario.add(num,a);
+                //a=aux.get(num);
                 hay=true;
             }
         }
         if (!hay)
             fallos++;
         intentos.add(a);
-        return aux;
+        return palabrausuario;
     }
 
+    public boolean finJuego(){
+        boolean fin = false;
+        if (fallos==7){
+            fin = true;
+            System.out.println(jugador.getNombre() +  " has perdido.");
+        } else if (pala) {
+            
+        }
+    }
 }
 
 
