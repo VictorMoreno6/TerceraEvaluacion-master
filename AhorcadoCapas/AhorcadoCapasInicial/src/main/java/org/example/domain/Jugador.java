@@ -20,7 +20,11 @@ public class Jugador {
         return puntuacion;
     }
 
-    public void setPuntuacion() {
-        this.puntuacion = puntuacion + 1;
+    public void setPuntuacion(int num) {
+        this.puntuacion = puntuacion + num;
+    }
+
+    public void restablecerPuntuacion(){
+        puntuacion = 0;
     }
 }

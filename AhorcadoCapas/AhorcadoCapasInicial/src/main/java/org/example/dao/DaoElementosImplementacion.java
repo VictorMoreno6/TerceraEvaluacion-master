@@ -7,6 +7,7 @@ import org.example.domain.Elemento;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class DaoElementosImplementacion implements DaoElementos {
 
     @Override
     public List<Elemento> getElementosCategoria(String categoria) {
-        List<Elemento> aux=null;
+        List<Elemento> aux = new ArrayList<Elemento>();
         for (int i = 0; i < lista.getListaelementos().size(); i++) {
             if (lista.getListaelementos().get(i).getCategoria().equalsIgnoreCase(categoria)){
                 aux.add(lista.getListaelementos().get(i));

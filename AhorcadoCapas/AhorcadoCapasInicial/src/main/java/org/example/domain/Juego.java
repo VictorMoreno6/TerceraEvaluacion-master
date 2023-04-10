@@ -5,6 +5,9 @@ import org.example.dao.Elementos;
 import org.example.service.GestionElementos;
 import org.example.service.IGestionElementos;
 
+import org.example.common.CategoriaException;
+import org.example.common.Comprobacion;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,9 +26,8 @@ public class Juego {
     private ArrayList<String> palabrausuario;
 
     private int dificultad; //opcional, aquí o por elemento.
-    public Juego(Jugador jugador, Elemento aAdivinar){
+    public Juego(Jugador jugador){
         this.jugador= jugador;
-        this.aAdivinar= aAdivinar;
         fallos=0;
     }
 
@@ -57,9 +59,33 @@ public class Juego {
         //new GestionElementos()
         Scanner sc = new Scanner(System.in);
         Categoria aux [] = Categoria.values();
-        System.out.println("Selecciona una categoria de las siguientes " + Arrays.toString(Categoria.values()));
-        int cat = sc.nextInt();
-        String categoria= String.valueOf(aux[cat]);
+        String categoria=null;
+        do {
+            System.out.println("Selecciona una categoria de las siguientes " + Arrays.toString(Categoria.values()));
+            int cat = sc.nextInt();
+            switch (cat){
+                case 1:
+                    categoria="accion";
+                    break;
+                case 2:
+                    categoria="comedia";
+                    break;
+                case 3:
+                    categoria="miedo";
+                    break;
+                case 4:
+                    categoria="pokemon";
+                    break;
+                default:
+                    System.out.println("Selecciona un numero del 1 al 4.");
+            }
+        }while (categoria==null);
+        try {
+            Comprobacion.categoriaOk(categoria);
+        }catch (CategoriaException e){
+            System.out.println(e.getMessage());
+        }
+        lista = new GestionElementos();
         List<Elemento> grupoPalabras= lista.getListaElementosCategoria(categoria);
         int azar = (int) (Math.random() * grupoPalabras.size());
         aAdivinar= grupoPalabras.get(azar);
@@ -92,9 +118,27 @@ public class Juego {
         if (fallos==7){
             fin = true;
             System.out.println(jugador.getNombre() +  " has perdido.");
-        } else if (pala) {
-            
         }
+        boolean fing = true;
+        String palabra= aAdivinar.getIncognita();
+        for (int i = 0; i < palabra.length(); i++) {
+            if (!(palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i))))){
+                fing = false;
+            }
+        }
+        if (fing==true){
+            int num = 0;
+            if (fallos == 0){
+                num = 10;
+                jugador.setPuntuacion(num);
+            } else {
+                num=5;
+                jugador.setPuntuacion(num);
+            }
+            fin = true;
+            System.out.println("Enhorabuena" + jugador.getNombre() + " has acertado en " + intentos.size() + " intentos y has tenido " + fallos + " fallos.");
+        }
+        return fin;
     }
 }
 
