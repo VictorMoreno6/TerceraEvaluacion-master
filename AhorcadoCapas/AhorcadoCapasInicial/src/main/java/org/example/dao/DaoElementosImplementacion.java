@@ -99,16 +99,18 @@ public class DaoElementosImplementacion implements DaoElementos {
             }
         }
         lista.getListaelementos().remove(aux);
-        /djdjdjdd
     }
 
     @Override
     public void idOk(int id) throws IdException {
+        boolean esta= false;
         for (int i = 0; i <  lista.getListaelementos().size(); i++) {
             if (id == lista.getListaelementos().get(i).getId()){
-                IdException ew;
-                throw ew.getMessage();
+                esta = true;
             }
+        }
+        if (esta=true){
+            throw new IdException();
         }
     }
 
