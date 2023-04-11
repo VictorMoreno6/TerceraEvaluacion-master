@@ -99,6 +99,7 @@ public class DaoElementosImplementacion implements DaoElementos {
             }
         }
         lista.getListaelementos().remove(aux);
+        /djdjdjdd
     }
 
     @Override
