@@ -33,13 +33,8 @@ public class DaoElementosImplementacion implements DaoElementos {
     }
 
     @Override
-    public boolean insertarElemento(int id, int level, String incognita, String categoria) {
-        try {
-            return lista.getListaelementos().add(new Elemento(id,level,incognita,categoria));
-
-        } catch (CategoriaException ex) {
-            throw new RuntimeException(ex);
-        }
+    public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException{
+            return lista.getListaelementos().add(new Elemento(id, level, incognita, categoria));
     }
 
     @Override
@@ -104,6 +99,16 @@ public class DaoElementosImplementacion implements DaoElementos {
             }
         }
         lista.getListaelementos().remove(aux);
+    }
+
+    @Override
+    public void idOk(int id) throws IdException {
+        for (int i = 0; i <  lista.getListaelementos().size(); i++) {
+            if (id == lista.getListaelementos().get(i).getId()){
+                IdException ew;
+                throw ew.getMessage();
+            }
+        }
     }
 
     @Override

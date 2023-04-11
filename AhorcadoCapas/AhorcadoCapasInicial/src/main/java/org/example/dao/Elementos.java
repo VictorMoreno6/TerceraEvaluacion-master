@@ -22,6 +22,9 @@ public class Elementos {
         for (int i = 0; i < 10; i++) {
             elementos.add(new Elemento(autonumerico++, 2, faker.pokemon().name(), Categoria.pokemon.name()));
         }
+        for (int i = 0; i < 10; i++) {
+            elementos.add(new Elemento(autonumerico++, 2, faker.animal().name(), Categoria.animal.name()));
+        }
     }catch(CategoriaException e){
         System.out.println(e.getMessage());
     }

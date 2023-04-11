@@ -11,17 +11,19 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args)  {
+
         Scanner sc = new Scanner(System.in);
         //En el main sólo hay que llamar a los métodos de la UI que darán paso al luego o administrar diccionario.
         //Pero este código es para que veáis cómo funciona ciertos aspectos de la aplicación a tener en cuenta
 
-        /*GestionDiccionario.mostrarMenu();
+
+        GestionDiccionario.mostrarMenu();
         try {
             Comprobacion.categoriaOk(Categoria.comedia.name());
             Comprobacion.categoriaOk("hola");
         }catch (CategoriaException e){
             System.out.println(e.getMessage());
-        }*/
+        }
 
 
         /*Faker faker = new Faker();
@@ -48,12 +50,9 @@ public class Main {
             String incognita=juego.obtenerPalabra();
             System.out.println(incognita);
             do {
-                System.out.println("Elige que categoria de las siguientes prefieres");
-                try {
-                    Comprobacion.categoriaOk(sc.next());
-                }catch (CategoriaException e){
-                    System.out.println(e.getMessage());
-                }
+                juego.pintarTablero();
+                //juego.mostradorIncognita();
+                juego.ronda(incognita);
 
             }while (!juego.finJuego());
             System.out.println("Quieres seguir jugando");

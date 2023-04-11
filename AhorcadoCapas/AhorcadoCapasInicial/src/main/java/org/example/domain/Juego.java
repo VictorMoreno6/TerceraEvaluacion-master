@@ -23,9 +23,10 @@ public class Juego {
     private GestionElementos lista;
     private int fallos;
 
-    private ArrayList<String> palabrausuario;
+    private char[] palabrausuario;
 
     private int dificultad; //opcional, aquí o por elemento.
+
     public Juego(Jugador jugador){
         this.jugador= jugador;
         fallos=0;
@@ -35,28 +36,29 @@ public class Juego {
         if (fallos==1){
             System.out.println("  +---+\n  |   |\n      |\n      |\n      |\n      |\n=========");
         }
-        if (fallos==2){
+        else if (fallos==2){
             System.out.println("  +---+\n  |   |\n  O   |\n      |\n      |\n      |\n=========");
         }
-        if (fallos==3){
+        else if (fallos==3){
             System.out.println("  +---+\n  |   |\n  O   |\n  |   |\n      |\n      |\n=========");
         }
-        if (fallos==4){
+        else if (fallos==4){
             System.out.println("  +---+\n  |   |\n  O   |\n /|   |\n      |\n      |\n=========");
         }
-        if (fallos==5){
+        else if (fallos==5){
             System.out.println("  +---+\n  |   |\n  O   |\n /|\\  |\n      |\n      |\n=========");
         }
-        if (fallos==6){
+        else if (fallos==6){
             System.out.println("  +---+\n  |   |\n  O   |\n /|\\  |\n /    |\n      |\n=========");
         }
-        if (fallos==7){
+        else if (fallos==7){
             System.out.println("  +---+\n  |   |\n  O   |\n /|\\  |\n / \\  |\n      |\n=========");
         }
     }
 
     public String obtenerPalabra(){
         //new GestionElementos()
+        intentos= new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         Categoria aux [] = Categoria.values();
         String categoria=null;
@@ -91,28 +93,56 @@ public class Juego {
         aAdivinar= grupoPalabras.get(azar);
         String palabra=aAdivinar.getIncognita();
         int length =palabra.length();
-        palabrausuario = new ArrayList<String>(length);
+        //palabrausuario = new ArrayList<String>(length);
         return palabra;
     }
 
-    public ArrayList<String> ronda(String a, String palabra){
-        //String palabra= obtenerPalabra();
-        int length =palabra.length();
-        boolean hay=false;
-        //ArrayList<String> aux = new ArrayList<>(length);
-        for (int num=0;num<length;num++) {
-            if (a.equalsIgnoreCase(String.valueOf(palabra.charAt(num)))){
-                palabrausuario.add(num,a);
-                //a=aux.get(num);
-                hay=true;
+    public boolean letraOk(String a){
+        boolean bien=false;
+        try{
+            if (a.length() != 1) {
+                throw new IllegalArgumentException("Debe ingresar solo una letra.");
             }
+
+            char letra = a.charAt(0);
+
+            // Comprobar si la letra está entre la 'a' y la 'z'
+            if (!(letra >= 'a' && letra <= 'z') || !(letra >= 'A' && letra <= 'Z')) {
+                throw new IllegalArgumentException("Debe ingresar una letra entre la 'a' y la 'z'.");
+            }else {
+                bien=true;
+            }
+        }catch (IllegalArgumentException e){
+            System.out.println("Error: " + e.getMessage());
         }
-        if (!hay)
-            fallos++;
-        intentos.add(a);
+        return bien;
+    }
+    public char[] ronda(String palabra){
+        Scanner sc = new Scanner(System.in);
+        //String palabra= obtenerPalabra();
+        System.out.println("Letras introducidas: " + intentos);
+        System.out.println("Escribe una letra");
+        String a= String.valueOf(sc.next().charAt(0));
+        if (letraOk(a)){
+            intentos.add(a);
+            int length =palabra.length();
+            boolean hay=false;
+            //ArrayList<String> aux = new ArrayList<>(length);
+            for (int num=0;num<length;num++) {
+                if (a.equalsIgnoreCase(String.valueOf(palabra.charAt(num)))){
+                    //palabrausuario.add(num,a);
+                    //a=aux.get(num);
+                    hay=true;
+                }
+            }
+            if (!hay)
+                fallos++;
+            intentos.add(a);
+        }
         return palabrausuario;
     }
 
+    //public  ArrayList<Character> mostrardorIncognita()
     public boolean finJuego(){
         boolean fin = false;
         if (fallos==7){
@@ -122,9 +152,9 @@ public class Juego {
         boolean fing = true;
         String palabra= aAdivinar.getIncognita();
         for (int i = 0; i < palabra.length(); i++) {
-            if (!(palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i))))){
+            /*if (!(palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i))))){
                 fing = false;
-            }
+            }*/
         }
         if (fing==true){
             int num = 0;
