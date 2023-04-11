@@ -18,4 +18,6 @@ public interface DaoElementos {
     public void eliminarElemento(Elemento elemento) ;
     public void eliminarElemento(int id) ;
     public void idOk(int id) throws IdException;
+
+    public void idHay(int id) throws IdException;
     }

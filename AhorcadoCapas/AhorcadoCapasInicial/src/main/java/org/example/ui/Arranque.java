@@ -2,6 +2,7 @@ package org.example.ui;
 
 import org.example.common.Constantes;
 import org.example.domain.Juego;
+import org.example.ui.GestionDiccionario.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -18,7 +19,7 @@ public class Arranque {
                 if (num==1 || num==2){
                     bien = true;
                 } else {
-                    System.out.println("Numero introducido no válido");
+                    System.out.println("Número introducido no válido");
                 }
             }catch(InputMismatchException e){
                 System.out.println("Tienes que introducir un numero no una letra");
@@ -27,7 +28,8 @@ public class Arranque {
             }
         }while (bien==false);
         if (num==1){
-            GestionDiccionario.mostrarMenu();
+            GestionDiccionario ee=new GestionDiccionario();
+            ee.ejecutarOpcion();
         } else {
             Jugar.jugar();
         }

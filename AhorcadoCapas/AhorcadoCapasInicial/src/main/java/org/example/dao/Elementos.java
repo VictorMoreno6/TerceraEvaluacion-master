@@ -40,6 +40,10 @@ public class Elementos {
     }
 
     public List<Elemento> getListaelementos() {
+        /*List<Elemento> aux=null;
+        for (int i = 0; i < ; i++) {
+
+        }*/
         return elementos;
     }
 

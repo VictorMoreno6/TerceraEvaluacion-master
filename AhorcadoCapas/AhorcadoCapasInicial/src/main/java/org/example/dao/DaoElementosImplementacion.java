@@ -34,7 +34,12 @@ public class DaoElementosImplementacion implements DaoElementos {
 
     @Override
     public boolean insertarElemento(int id, int level, String incognita, String categoria) throws CategoriaException{
-            return lista.getListaelementos().add(new Elemento(id, level, incognita, categoria));
+        try {
+            idOk(id);
+        } catch (IdException e) {
+            throw new RuntimeException(e);
+        }
+        return lista.getListaelementos().add(new Elemento(id, level, incognita, categoria));
     }
 
     @Override
@@ -91,14 +96,20 @@ public class DaoElementosImplementacion implements DaoElementos {
     }
 
     @Override
-    public void eliminarElemento(int id) {
-        Elemento aux=null;
-        for (int i = 0; i < lista.getListaelementos().size(); i++) {
-            if (lista.getListaelementos().get(i).getId()==id){
-                aux=lista.getListaelementos().get(i);
+    public void eliminarElemento(int id){
+        try {
+            Elemento aux=null;
+            for (int i = 0; i < lista.getListaelementos().size(); i++) {
+                if (lista.getListaelementos().get(i).getId()==id){
+                    aux=lista.getListaelementos().get(i);
+                }
             }
+            lista.getListaelementos().remove(aux);
+        } catch (NullPointerException e) {
+            System.out.println("Introduce un id existente");
+            throw new RuntimeException(e);
         }
-        lista.getListaelementos().remove(aux);
+
     }
 
     @Override
@@ -113,7 +124,18 @@ public class DaoElementosImplementacion implements DaoElementos {
             throw new IdException();
         }
     }
-
+    @Override
+    public void idHay(int id) throws IdException {
+        boolean esta= false;
+        for (int i = 0; i <  lista.getListaelementos().size(); i++) {
+            if (id == lista.getListaelementos().get(i).getId()){
+                esta = true;
+            }
+        }
+        if (esta=false){
+            throw new IdException();
+        }
+    }
     @Override
     public boolean modificarCategoria(int id, String categoria) {
         boolean cambio=false;
@@ -122,6 +144,11 @@ public class DaoElementosImplementacion implements DaoElementos {
             if (lista.getListaelementos().get(i).getId()==id){
                 aux=lista.getListaelementos().get(i);
             }
+        }
+        try {
+            idHay(id);
+        }catch (IdException e){
+            throw new RuntimeException(e);
         }
         try {
             aux.setCategoria(categoria);
@@ -134,13 +161,21 @@ public class DaoElementosImplementacion implements DaoElementos {
 
     @Override
     public boolean modificarElemento(int id, String incognita) {
+        boolean cambio=false;
         Elemento aux=null;
         for (int i = 0; i < lista.getListaelementos().size(); i++) {
             if (lista.getListaelementos().get(i).getId()==id){
                 aux=lista.getListaelementos().get(i);
             }
         }
-        aux.setIncognita(incognita);
-        return true;
+        try {
+            idHay(id);
+            aux.setIncognita(incognita);
+            cambio=true;
+        }catch (IdException e){
+            throw new RuntimeException(e);
+        }
+
+        return cambio;
     }
 }

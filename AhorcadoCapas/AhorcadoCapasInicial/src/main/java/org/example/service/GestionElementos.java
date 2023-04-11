@@ -60,7 +60,11 @@ public class GestionElementos implements IGestionElementos {
 
     @Override
     public List<Elemento> listarElementos(boolean ascendente) {
-        return daoElementos.getElementosOrdenados(ascendente);
+        List<Elemento> aux= daoElementos.getElementosOrdenados(ascendente);
+        for (int i = 0; i < aux.size(); i++) {
+            System.out.println(aux.get(i).toString());
+        }
+        return aux;
     }
 
     @Override

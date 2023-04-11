@@ -23,7 +23,8 @@ public class Juego {
     private GestionElementos lista;
     private int fallos;
 
-    private char[] palabrausuario;
+    private ArrayList<String> palabrausuario;
+    //private char[] palabrausuario;
 
     private int dificultad; //opcional, aquí o por elemento.
 
@@ -93,7 +94,11 @@ public class Juego {
         aAdivinar= grupoPalabras.get(azar);
         String palabra=aAdivinar.getIncognita();
         int length =palabra.length();
-        //palabrausuario = new ArrayList<String>(length);
+        //palabrausuario = new char[length];
+        palabrausuario= new ArrayList<>(length);
+        for (int i = 0; i < length; i++) {
+            palabrausuario.add(".");
+        }
         return palabra;
     }
 
@@ -107,7 +112,7 @@ public class Juego {
             char letra = a.charAt(0);
 
             // Comprobar si la letra está entre la 'a' y la 'z'
-            if (!(letra >= 'a' && letra <= 'z') || !(letra >= 'A' && letra <= 'Z')) {
+            if (!(letra>= 'a' && letra <= 'z') && !(letra >= 'A' && letra <= 'Z')) {
                 throw new IllegalArgumentException("Debe ingresar una letra entre la 'a' y la 'z'.");
             }else {
                 bien=true;
@@ -117,10 +122,10 @@ public class Juego {
         }
         return bien;
     }
-    public char[] ronda(String palabra){
+    public void ronda(String palabra){
         Scanner sc = new Scanner(System.in);
         //String palabra= obtenerPalabra();
-        System.out.println("Letras introducidas: " + intentos);
+        System.out.println("Letras introducidas: " + intentos.toString());
         System.out.println("Escribe una letra");
         String a= String.valueOf(sc.next().charAt(0));
         if (letraOk(a)){
@@ -139,7 +144,30 @@ public class Juego {
                 fallos++;
             intentos.add(a);
         }
-        return palabrausuario;
+    }
+
+    public void mostradorUsuario(){
+        String palabra=aAdivinar.getIncognita();
+        String[] mostrar =new String[palabra.length()];
+        System.out.print("{ ");
+        for (int i = 0; i < palabra.length(); i++) {
+            if (!(palabrausuario.get(i)==null)){
+                String letra=String.valueOf(palabra.charAt(i));
+                if (palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i)))) {
+
+                    mostrar[i]= String.valueOf(palabra.charAt(i));
+                } else if (letra.equalsIgnoreCase(" ")){
+                    mostrar[i]=" ";
+                } else {
+                    mostrar[i]="_";
+                }
+            } else {
+                mostrar[i]="_";
+            }
+            System.out.print(mostrar[i]+ ", ");
+        }
+        System.out.print("}");
+        System.out.println();
     }
 
     //public  ArrayList<Character> mostrardorIncognita()
@@ -152,9 +180,9 @@ public class Juego {
         boolean fing = true;
         String palabra= aAdivinar.getIncognita();
         for (int i = 0; i < palabra.length(); i++) {
-            /*if (!(palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i))))){
+            if (!palabrausuario.get(i).equalsIgnoreCase(String.valueOf(palabra.charAt(i)))) {
                 fing = false;
-            }*/
+            }
         }
         if (fing==true){
             int num = 0;

@@ -71,4 +71,12 @@ public class Elemento implements Comparable<Elemento> {
     public int compareTo(Elemento o) {
         return Integer.compare(id,o.id);
     }
+
+    @Override
+    public String toString() {
+        return "id=" + id +
+                ", level=" + level +
+                ", incognita='" + incognita +
+                ", categoria='" + categoria + '}';
+    }
 }
