@@ -17,7 +17,8 @@ public interface DaoElementos {
     public boolean modificarElemento(int id, String incognita);
     public void eliminarElemento(Elemento elemento) ;
     public void eliminarElemento(int id) ;
-    public void idOk(int id) throws IdException;
 
-    public void idHay(int id) throws IdException;
+    //public void idOk(int id) throws IdException;
+
+    //public void idHay(int id) throws IdException;
     }

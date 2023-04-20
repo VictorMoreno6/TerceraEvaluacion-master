@@ -14,6 +14,7 @@ public class GestionElementos implements IGestionElementos {
 
     private final DaoElementos daoElementos;
 
+    private final DaoElementosFicheros daoElementosFicheros;
 
     public GestionElementos() {
         this.daoElementos = new DaoElementosImplementacion();
@@ -94,7 +95,7 @@ public class GestionElementos implements IGestionElementos {
 
     @Override
     public void crearFicheros() throws IOException {
-
+        crearFicheros();
     }
 
     @Override

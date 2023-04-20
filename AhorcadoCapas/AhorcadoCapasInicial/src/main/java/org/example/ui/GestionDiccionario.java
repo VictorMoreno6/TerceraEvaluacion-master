@@ -2,15 +2,10 @@ package org.example.ui;
 
 import org.example.common.CategoriaException;
 import org.example.common.Constantes;
-import org.example.dao.DaoElementosImplementacion;
-import org.example.dao.IdException;
-import org.example.domain.Elemento;
 import org.example.service.GestionElementos;
-import org.example.service.IGestionElementos;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 /**
