@@ -14,7 +14,7 @@ public class GestionElementos implements IGestionElementos {
 
     private final DaoElementos daoElementos;
 
-    private final DaoElementosFicheros daoElementosFicheros;
+    //private final DaoElementosFicheros daoElementosFicheros;
 
     public GestionElementos() {
         this.daoElementos = new DaoElementosImplementacion();
