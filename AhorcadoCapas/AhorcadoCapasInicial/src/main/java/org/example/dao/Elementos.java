@@ -16,6 +16,7 @@ public class Elementos {
     try {
         elementos.add(new Elemento(autonumerico++, 1, "El mejor verano de mi vida", Categoria.comedia.name()));
         elementos.add(new Elemento(autonumerico++, 1, "Misión Imposible IV fallout", Categoria.accion.name()));
+        elementos.add(new Elemento(autonumerico++, 2, "La monja", Categoria.miedo.name()));
         //librería generadora de elementos mediante categoria maven
         Faker faker = new Faker();
         String nombre = faker.gameOfThrones().character();

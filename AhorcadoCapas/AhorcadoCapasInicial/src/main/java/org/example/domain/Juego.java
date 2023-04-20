@@ -61,7 +61,7 @@ public class Juego {
         //new GestionElementos()
         intentos= new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        Categoria aux [] = Categoria.values();
+        //Categoria aux [] = Categoria.values();
         String categoria=null;
         do {
             System.out.println("Selecciona una categoria de las siguientes " + Arrays.toString(Categoria.values()));
@@ -110,13 +110,26 @@ public class Juego {
             }
 
             char letra = a.charAt(0);
-
+            //else  {
             // Comprobar si la letra está entre la 'a' y la 'z'
             if (!(letra>= 'a' && letra <= 'z') && !(letra >= 'A' && letra <= 'Z')) {
                 throw new IllegalArgumentException("Debe ingresar una letra entre la 'a' y la 'z'.");
             }else {
                 bien=true;
             }
+            /*else {
+                String letra1 = String.valueOf(letra);
+                boolean repe = false;
+                for (int i = 0; i < intentos.size(); i++) {
+                    if (intentos.get(i).equalsIgnoreCase(letra1)) {
+                        repe = true;
+                        System.out.println("Letra repetida");
+                    }
+                }
+                if (repe = false){
+                    bien=true;
+                }
+            }*/
         }catch (IllegalArgumentException e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -129,7 +142,6 @@ public class Juego {
         System.out.println("Escribe una letra");
         String a= String.valueOf(sc.next().charAt(0));
         if (letraOk(a)){
-            intentos.add(a);
             int length =palabra.length();
             boolean hay=false;
             //ArrayList<String> aux = new ArrayList<>(length);
@@ -164,7 +176,7 @@ public class Juego {
             } else {
                 mostrar[i]="_";
             }
-            System.out.print(mostrar[i]+ ", ");
+            System.out.print(mostrar[i]+ " ");
         }
         System.out.print("}");
         System.out.println();
