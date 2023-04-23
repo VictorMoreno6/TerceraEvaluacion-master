@@ -95,7 +95,7 @@ public class GestionElementos implements IGestionElementos {
 
     @Override
     public void crearFicheros() throws IOException {
-        crearFicheros();
+
     }
 
     @Override
